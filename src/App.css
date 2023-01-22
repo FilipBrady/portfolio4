@@ -1,38 +1,213 @@
-.App {
+body{
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  /* padding: 2rem; */
   text-align: center;
+  /* background-color: #313030; */
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #313030;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App {
+  /* width: 1450px; */
+  /* margin: auto; */
+  /* height: 100vh; */
+  /* overflow-x: hidden; */
+  /* margin: 0; */
+  /* padding: 0; */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.LinkStyles {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* .MyPhoto {
+  filter: grayscale(100%);
+  position: absolute;
+  width: 33%;
+  height: auto;
+  max-height: 700px;
+  max-width: 100%;
+  bottom: 0%;
+  left: 0%;
+  transform: translate(-17%, 0%);
+} */
+/* .MyPhoto {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 35%;
+  height: auto;
+  max-width: 35%;
+  max-height: 700px;
+} */
+
+.ContentBox {
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(4, 25%);
+}
+
+.MyPhoto {
+  filter: grayscale(100%);
+  /* grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 2; */
+  position: fixed;
+  bottom: 0;
+  left: 150px;
+  width: 35%;
+}
+
+.TextBoxAbout {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  text-align: left;
+}
+
+.Fixed {
+  position: fixed;
+  top: calc(50% - 236px);
+  left: 50%;
+  text-align: left;
+  width: 42%;
+}
+
+.TextBoxHome {
+  position: fixed;
+  width: 40%;
+  top: calc(50% - 129px);
+  left: 50%;
+  text-align: left;
+  /* grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 4; */
+}
+
+.AboutLinks {
+  color: #00C2FF;
+  text-decoration: 1.5px underline;
+}
+
+.AboutLinks:hover,
+.AboutLinks:active {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.ProjectsPage {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  align-items: center;
+  /* margin: 24px 0; */
+  height: 100vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ProjectThumbnailPhoto {
+  border-radius: 25px;
+  max-width: 700px;
+  max-height: 500px;
+}
+
+.Sticky {
+  position: sticky;
+  top: 0;
+
+}
+
+.BackgroundDiff {
+  background-color: #313030;
+
+}
+
+.BackgroundDiff:nth-child(2),
+.BackgroundDiff:nth-child(4) {
+  background-color: #4B4B4B;
+}
+
+
+.ProjectThumbnailPhoto {
+  max-width: 300px;
+}
+
+.ProjectThumb {
+  width: fit-content;
+  filter: grayscale(100%);
+}
+
+.ProjectThumb:hover,
+.ProjectThumb:active {
+  filter: grayscale(0%);
+}
+
+.Todo,
+.Calculator,
+.Spending,
+.Stack,
+.Eshop {
+  position: absolute;
+}
+
+.Todo {
+  top: 220px;
+  left: 100px;
+}
+
+.Calculator {
+  top: 250px;
+  right: 150px;
+}
+
+.Spending {
+  top: 300px;
+  left: 400px;
+}
+
+.Stack {
+  top: 350px;
+  left: 50px;
+}
+
+.Eshop {
+  top: 350px;
+  right: 500px;
+}
+
+
+.footerSocMedia {
+  list-style: none;
+  display: flex;
+}
+
+.footerSocMedia li {
+  margin: 0 5px;
+}
+
+.footerSocMedia li a {
+  color: white;
 }
