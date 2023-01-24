@@ -8,17 +8,11 @@ import { routes } from '../../components/types/routes';
 const CalculatorThumbSingle = () => {
   return (
     <div 
-    className='ProjectThumb Calculator'
-    // className='Sticky BackgroundDiff' style={{zIndex: 10}}
+    className='ProjectThumb calculator'
     >
       {ProjectData.map(Project => {
         if (Project.thumbId === 'calculator') {
           return (
-            // <Box className='ProjectsPage'>
-            //   <Box className='ProjectBox'>
-            //     <Typography variant='h4'>{Project.thumbHeader}</Typography>
-            //     <Typography variant='h5'>{Project.thumbDesc}</Typography>
-            //   </Box>
             <Link to={`${routes.project}/${Project.thumbId}`}>
             <Box>
               <img
@@ -28,7 +22,6 @@ const CalculatorThumbSingle = () => {
               />
             </Box>
           </Link>
-            // </Box>
           );
         }
       })}

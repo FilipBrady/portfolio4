@@ -7,17 +7,11 @@ import { routes } from '../../components/types/routes';
 const StackThumbSingle = () => {
   return (
     <div
-    className='ProjectThumb Stack'
-    // className='Sticky BackgroundDiff' style={{zIndex: 10}}
+    className='ProjectThumb stackOver'
     >
       {ProjectData.map(Project => {
         if (Project.thumbId === 'stackOver') {
           return (
-            // <Box className='ProjectsPage'>
-            //   <Box className='ProjectBox'>
-            //     <Typography variant='h4'>{Project.thumbHeader}</Typography>
-            //     <Typography variant='h5'>{Project.thumbDesc}</Typography>
-            //   </Box>
             <Link to={`${routes.project}/${Project.thumbId}`}>
               <Box>
                 <img
@@ -27,7 +21,6 @@ const StackThumbSingle = () => {
                 />
               </Box>
             </Link>
-            // </Box>
           );
         }
       })}

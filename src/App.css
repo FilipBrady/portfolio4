@@ -1,4 +1,4 @@
-body{
+body {
   margin: 0;
   padding: 0;
 }
@@ -157,51 +157,52 @@ body{
 
 .ProjectThumb {
   width: fit-content;
-  filter: grayscale(100%);
+  filter: grayscale(0%);
 }
 
 .ProjectThumb:hover,
 .ProjectThumb:active {
-  filter: grayscale(0%);
+  filter: grayscale(100%);
 }
 
-.Todo,
-.Calculator,
-.Spending,
-.Stack,
-.Eshop {
+.todo,
+.calculator,
+.spending,
+.stackOver,
+.eshop {
   position: absolute;
 }
 
-.Todo {
+.todo {
   top: 220px;
   left: 100px;
 }
 
-.Calculator {
-  top: 250px;
-  right: 150px;
-}
-
-.Spending {
-  top: 300px;
-  left: 400px;
-}
-
-.Stack {
-  top: 350px;
-  left: 50px;
-}
-
-.Eshop {
-  top: 350px;
-  right: 500px;
+.calculator {
+  top: 220px;
+  left: 500px;
 }
 
 
+.eshop {
+  top: 220px;
+    right: 100px;
+  }
+
+  .spending {
+    top: 400px;
+    left: 100px;
+  }
+  
+  .stackOver {
+    top: 400px;
+    right: 100px;
+  }
+  
 .footerSocMedia {
   list-style: none;
   display: flex;
+  justify-content: center;
 }
 
 .footerSocMedia li {
@@ -210,4 +211,65 @@ body{
 
 .footerSocMedia li a {
   color: white;
+}
+
+.learnMoreHover {
+  background-color: red;
+}
+
+@media (max-width: 1200px) {
+  body {
+    max-width: 96%;
+    padding: 0 2%
+  }
+  .MyPhoto {
+    display: block;
+    position:inherit;
+    margin: 0 auto;
+    max-width: 80%;
+    width:fit-content;
+    min-width: 60%;
+  }
+  .MyPhotoAbout {
+    display: none;
+  }
+  .ContentBox {
+    display: block;
+    width: 96%;
+    margin: 0 2%;
+  }
+  .TextBoxHome,
+  .TextBoxAbout,
+  .Fixed {
+    width: 90%;
+    position: unset;
+    margin: auto;
+    padding: 15px;
+    margin-top: 20px;
+  }
+
+  .ProjectThumbnailPhoto {
+    max-width: 350px;
+  }
+  
+  .ProjectThumb {
+    width: fit-content;
+    filter: grayscale(0%);
+    margin: 0 auto;
+  }
+  
+  .ProjectThumb:hover,
+  .ProjectThumb:active {
+    filter: grayscale(100%);
+  }
+  
+  .todo,
+  .calculator,
+  .spending,
+  .stackOver,
+  .eshop {
+    position: inherit;
+  }
+  
+  
 }

@@ -55,7 +55,7 @@ const Contact = () => {
                 target={'_blank'}
                 rel='noreferrer'
               >
-                <GitHubIcon sx={{ fontSize: '100px' }} />
+                <GitHubIcon sx={{ fontSize: '4rem' }} />
               </a>
             </li>
             <li>
@@ -64,7 +64,7 @@ const Contact = () => {
                 target={'_blank'}
                 rel='noreferrer'
               >
-                <LinkedInIcon sx={{ fontSize: '100px' }} />
+                <LinkedInIcon sx={{ fontSize: '4rem' }} />
               </a>
             </li>
             <li>
@@ -73,7 +73,7 @@ const Contact = () => {
                 target={'_blank'}
                 rel='noreferrer'
               >
-                <InstagramIcon sx={{ fontSize: '100px' }} />
+                <InstagramIcon sx={{ fontSize: '4rem' }} />
               </a>
             </li>
             <li>
@@ -82,7 +82,7 @@ const Contact = () => {
                 target={'_blank'}
                 rel='noreferrer'
               >
-                <MailIcon sx={{ fontSize: '100px' }} />
+                <MailIcon sx={{ fontSize: '4rem' }} />
               </a>
             </li>
           </ul>

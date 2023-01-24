@@ -1,23 +1,20 @@
 import { Box, Typography } from '@mui/material';
-import TodoThumb from '../../images/todoapp/today-todos-medium.png'
+import TodoThumb from '../../images/todoapp/today-todos-medium.png';
 import { Link } from 'react-router-dom';
 import { ProjectData } from '../../components/types/ProjectsData';
 import { routes } from '../../components/types/routes';
 
 const TodoThumbSingle = () => {
+  const IMG = (imgName: any) => {
+    return require(`../../images/${imgName}`);
+  };
   return (
-    <div 
-    className='ProjectThumb Todo'
-    // className='Sticky BackgroundDiff' style={{zIndex: 10}}
+    <div
+    className='ProjectThumb todo'
     >
       {ProjectData.map(Project => {
         if (Project.thumbId === 'todo') {
           return (
-            // <Box className='ProjectsPage'>
-            //   <Box className='ProjectBox'>
-            //     <Typography variant='h4'>{Project.thumbHeader}</Typography>
-            //     <Typography variant='h5'>{Project.thumbDesc}</Typography>
-            //   </Box>
             <Link to={`${routes.project}/${Project.thumbId}`}>
             <Box>
               <img
@@ -27,11 +24,25 @@ const TodoThumbSingle = () => {
               />
             </Box>
           </Link>
-            // </Box>
           );
         }
       })}
     </div>
+    // <div>
+    //   {ProjectData.map(Project => (
+    //     <div className={`${Project.thumbId} ProjectThumb`}>
+    //       <Link to={`${routes.project}/${Project.thumbId}`}>
+    //         <Box>
+    //           <img
+    //             src={IMG(Project.thumbnail)}
+    //             alt={Project.thumbHeader}
+    //             className='ProjectThumbnailPhoto'
+    //           />
+    //         </Box>
+    //       </Link>
+    //     </div>
+    //   ))}
+    // </div>
   );
 };
 export default TodoThumbSingle;

@@ -7,18 +7,11 @@ import { routes } from '../../components/types/routes';
 const EshopThumbSingle = () => {
   return (
     <div 
-    className='ProjectThumb Eshop'
-    // className='Sticky BackgroundDiff' 
-    // style={{zIndex: 10}}
+    className='ProjectThumb eshop'
     >
       {ProjectData.map(Project => {
         if (Project.thumbId === 'eshop') {
           return (
-            // <Box className='ProjectsPage'>
-            //   <Box className='ProjectBox'>
-            //     <Typography variant='h4'>{Project.thumbHeader}</Typography>
-            //     <Typography variant='h5'>{Project.thumbDesc}</Typography>
-            //   </Box>
             <Link to={`${routes.project}/${Project.thumbId}`}>
             <Box>
               <img
@@ -28,7 +21,6 @@ const EshopThumbSingle = () => {
               />
             </Box>
           </Link>
-            // </Box>
           );
         }
       })}
