@@ -47,6 +47,36 @@ const Projects = () => {
           </Parallax>
         </ParallaxProvider>
       </Box>
+      {/* <Box
+        sx={{
+          minHeight: '150vh',
+          background: '#313030',
+          position: 'sticky',
+          top: 0,
+          zIndex: 10,
+          paddingTop: 5,
+        }}
+        className='Projects'
+      >
+        <Box>
+          <Typography variant='h4'>My Work</Typography>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignContent: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          <TodoThumbSingle />
+          <CalculatorThumbSingle />
+          <EshopThumbSingle />
+          <SpendingThumbSingle />
+          <StackThumbSingle />
+        </Box>
+      </Box> */}
     </div>
   );
 };

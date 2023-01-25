@@ -1,39 +1,53 @@
-import { Typography } from '@mui/material';
+import { Button, Tooltip, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ProjectData } from '../components/types/ProjectsData';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { routes } from '../components/types/routes';
+import { useState } from 'react';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import Calculator from '../components/CalculatorApp/Calculator';
 
 const Project = () => {
+  const [photoCount, setPhotoCount] = useState(0);
   const { id } = useParams();
   const IMG = (imgName: any) => {
     return require(`../images/${imgName}`);
   };
+  const handleNextPhoto = (maxPhotos: number) => {
+    if (photoCount === maxPhotos - 1) {
+      setPhotoCount(photoCount);
+    } else {
+      setPhotoCount(photoCount + 1);
+    }
+  };
+  const handlePreviousPhoto = () => {
+    if (photoCount !== 0) {
+      setPhotoCount(photoCount - 1);
+    }
+  };
+
   return (
     <div>
       {ProjectData.map(project => {
-        if (project.thumbId === id) {
+        if (project.thumbId === id && project.thumbId !== "calculator") {
           return (
-            <div style={{ padding: '15px' }}>
-              {/* <Link to={routes.contact}>Back</Link> */}
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  height: '100vh',
-                  
-                }}
-              >
-                <Box sx={{ textAlign: 'left' }}>
-                  <Typography variant='h5' sx={{ paddingTop: 2 }}>
-                    {project.thumbHeader}
-                  </Typography>
-                  <Typography variant='h6'>({project.thumbDesc})</Typography>
-                  <Typography variant='h2' sx={{ marginY: 2 }}>
+            <Box sx={{ padding: 2, paddingBottom: 4 }}>
+              <Box sx={{ textAlign: 'center', paddingY: 2 }}>
+                <Typography variant='h5' sx={{ paddingTop: 2 }}>
+                  {project.thumbHeader}
+                </Typography>
+                <Typography variant='h6'>{project.thumbDesc}</Typography>
+                <Tooltip
+                  title='Full code on Github'
+                  placement='left'
+                  enterDelay={10}
+                  leaveDelay={500}
+                >
+                  <Typography
+                    variant='h2'
+                    sx={{ marginY: 2, width: 'fit-content', marginX: 'auto' }}
+                  >
                     {' '}
                     <a
                       href={project.MoreBtnLink}
@@ -42,151 +56,149 @@ const Project = () => {
                       <GitHubIcon sx={{ fontSize: '5rem' }} />
                     </a>{' '}
                   </Typography>
-                </Box>
-                <Box>
-                  <img
-                    alt='nthng'
-                    src={IMG(project.projectDescription[0].photo)}
-                    style={{ maxWidth: '500px', borderRadius: '25px' }}
-                  />
-                </Box>
-              </Box>
-
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row-reverse',
-                  flexWrap: 'nowrap',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  height: '100vh',
-                }}
-              >
-                <Box sx={{ textAlign: 'left' }}>
-                  <Typography variant='h6' sx={{ maxWidth: '450px' }}>
-                    {project.projectDescription[0].label}
-                  </Typography>
-                  <Typography
-                    variant='h6'
-                    sx={{ maxWidth: '450px', paddingTop: 2 }}
-                  >
-                    {project.projectDescription[1].label}
-                  </Typography>
-                </Box>
-                <Box>
-                  <img
-                    alt='nthng'
-                    src={IMG(project.projectDescription[1].photo)}
-                    style={{ maxWidth: '500px', borderRadius: '25px' }}
-                  />
-                </Box>
+                </Tooltip>
               </Box>
 
               <Box
                 sx={{
                   display: 'flex',
                   flexDirection: 'row',
-                  flexWrap: 'nowrap',
-                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  justifyContent: 'space-around',
                   alignItems: 'center',
-                  height: '100vh',
+                  height: 'fit-content',
                 }}
               >
-                <Box sx={{ textAlign: 'left' }}>
-                  <Typography variant='h6' sx={{ maxWidth: '450px' }}>
-                    {project.projectDescription[2].label}
-                  </Typography>
-                </Box>
-                <Box>
-                  <img
-                    alt='nthng'
-                    src={IMG(project.projectDescription[2].photo)}
-                    style={{ maxWidth: '500px', borderRadius: '25px' }}
-                  />
-                </Box>
-              </Box>
-
-              {project.projectDescription.length === 4 && (
+                <Typography
+                  variant='h6'
+                  sx={{ maxWidth: '450px', paddingBottom: 4 }}
+                >
+                  {project.projectDescription[photoCount].label}
+                </Typography>
                 <Box
                   sx={{
                     display: 'flex',
                     flexDirection: 'row',
-                    flexWrap: 'nowrap',
-                    justifyContent: 'space-between',
+                    justifyContent: 'center',
                     alignItems: 'center',
-                    height: '100vh',
                   }}
                 >
-                  <Box sx={{ textAlign: 'left' }}>
-                    <Typography variant='h6' sx={{ maxWidth: '450px' }}>
-                      {project.projectDescription[3].label}
-                    </Typography>
-                  </Box>
-                  <Box>
+                  <Button
+                    sx={{ color: 'white' }}
+                    disabled={photoCount === 0}
+                    onClick={handlePreviousPhoto}
+                  >
+                    <ArrowBackIosNewIcon />{' '}
+                  </Button>
+                  <Box className='ProjectImg'>
                     <img
-                      alt='nthng'
-                      src={IMG(project.projectDescription[3].photo)}
+                      alt={project.thumbDesc}
+                      src={IMG(project.projectDescription[photoCount].photo)}
                       style={{ maxWidth: '500px', borderRadius: '25px' }}
                     />
                   </Box>
+                  <Button
+                    sx={{ color: 'white' }}
+                    disabled={
+                      photoCount === project.projectDescription.length - 1
+                    }
+                    onClick={() =>
+                      handleNextPhoto(project.projectDescription.length)
+                    }
+                  >
+                    {' '}
+                    <ArrowForwardIosIcon />{' '}
+                  </Button>
                 </Box>
-              )}
-            </div>
+              </Box>
+            </Box>
           );
+        } else if(project.thumbId === "calculator") {
+          return (
+            <Box sx={{ padding: 2, paddingBottom: 4 }}>
+              <Box sx={{ textAlign: 'center', paddingY: 2 }}>
+                <Typography variant='h5' sx={{ paddingTop: 2 }}>
+                  {project.thumbHeader}
+                </Typography>
+                <Typography variant='h6'>{project.thumbDesc}</Typography>
+                <Tooltip
+                  title='Full code on Github'
+                  placement='left'
+                  enterDelay={10}
+                  leaveDelay={500}
+                >
+                  <Typography
+                    variant='h2'
+                    sx={{ marginY: 2, width: 'fit-content', marginX: 'auto' }}
+                  >
+                    {' '}
+                    <a
+                      href={project.MoreBtnLink}
+                      style={{ color: 'white', textDecoration: 'none' }}
+                    >
+                      <GitHubIcon sx={{ fontSize: '5rem' }} />
+                    </a>{' '}
+                  </Typography>
+                </Tooltip>
+              </Box>
+
+              {/* <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  justifyContent: 'space-around',
+                  alignItems: 'center',
+                  height: 'fit-content',
+                }}
+              >
+                <Typography
+                  variant='h6'
+                  sx={{ maxWidth: '450px', paddingBottom: 4 }}
+                >
+                  {project.projectDescription[photoCount].label}
+                </Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Button
+                    sx={{ color: 'white' }}
+                    disabled={photoCount === 0}
+                    onClick={handlePreviousPhoto}
+                  >
+                    <ArrowBackIosNewIcon />{' '}
+                  </Button>
+                  <Box className='ProjectImg'>
+                    <img
+                      alt={project.thumbDesc}
+                      src={IMG(project.projectDescription[photoCount].photo)}
+                      style={{ maxWidth: '500px', borderRadius: '25px' }}
+                    />
+                  </Box>
+                  <Button
+                    sx={{ color: 'white' }}
+                    disabled={
+                      photoCount === project.projectDescription.length - 1
+                    }
+                    onClick={() =>
+                      handleNextPhoto(project.projectDescription.length)
+                    }
+                  >
+                    {' '}
+                    <ArrowForwardIosIcon />{' '}
+                  </Button>
+                </Box>
+              </Box> */}
+              <Calculator />
+            </Box>
+          )
         }
       })}
-      {/* {ProjectData.map(project => {
-        if (project.thumbId === id) {
-          return (
-            <div>
-              {project.projectDescription.map(item => {
-                return item ? (
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      flexWrap: 'wrap',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      height: '100vh',
-                    }}
-                  >
-                    <Box sx={{ textAlign: 'left' }}>
-                      <Typography variant='h5' sx={{ paddingTop: 2 }}>
-                        {project.thumbHeader}
-                      </Typography>
-                      <Typography variant='h6'>
-                        ({project.thumbDesc})
-                      </Typography>
-                      <Typography variant='h2' sx={{ marginY: 2 }}>
-                        {' '}
-                        <a
-                          href={project.MoreBtnLink}
-                          style={{ color: 'white', textDecoration: 'none' }}
-                        >
-                          <GitHubIcon sx={{ fontSize: '5rem' }} />
-                        </a>{' '}
-                      </Typography>
-                    </Box>
-                    <Box>
-                      <img
-                        alt='nthng'
-                        src={IMG(project.projectDescription[0].photo)}
-                        style={{ maxWidth: '500px', borderRadius: '25px' }}
-                      />
-                    </Box>
-                  </Box>
-                ) : null;
-              })}
-            </div>
-          );
-        }
-      })} */}
-      {/* {project.projectDescription.map(ProjectDesc => (
-      <div>
-      <img alt='nthng' src={IMG(ProjectDesc.photo)} />
-      </div>
-    ))} */}
     </div>
   );
 };
