@@ -1,26 +1,34 @@
-import { Box, Typography } from '@mui/material';
-import SpendingThumb from '../../images/Spendings/Dashboard.png'
+import { Box } from '@mui/material';
+import SpendingThumb from '../../images/ako thumbn/Group 162643.png';
 import { Link } from 'react-router-dom';
 import { ProjectData } from '../../components/types/ProjectsData';
 import { routes } from '../../components/types/routes';
+import { useState } from 'react';
 
 const SpendingThumbSingle = () => {
+  const [isHovered, setIsHovered] = useState(false);
   return (
-    <div  
-    className='ProjectThumb spending'
+    <div
+      className='ProjectThumb todo'
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {ProjectData.map(Project => {
         if (Project.thumbId === 'spending') {
           return (
             <Link to={`${routes.project}/${Project.thumbId}`}>
-            <Box>
-              <img
-                src={SpendingThumb}
-                alt={Project.thumbHeader}
-                className='ProjectThumbnailPhoto'
-              />
-            </Box>
-          </Link>
+              <div className={isHovered ? 'LearnMoreBtn' : 'DisplayNone'}>
+                Learn More
+              </div>
+
+              <Box>
+                <img
+                  src={SpendingThumb}
+                  alt={Project.thumbHeader}
+                  className='ProjectThumbnailPhoto'
+                />
+              </Box>
+            </Link>
           );
         }
       })}

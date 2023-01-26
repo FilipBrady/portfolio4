@@ -3,7 +3,6 @@ import './Calculator.css';
 import CalcButton from './CalcButton';
 import OperationBtn from './OperationBtn';
 
-
 export const ACTION = {
   ADD_DIGIT: 'addDigit',
   OPERATION: 'operation',
@@ -18,7 +17,17 @@ function reducer(state: any, { type, payload }: any) {
       if (payload.digit === '0' && state.currentOperand === '0') {
         return state;
       }
-      if (payload.digit === '.' && state.currentOperand.includes('.')) {
+      if (payload.digit !== '0' && state.currentOperand === '0') {
+        return {
+          ...state,
+          currentOperand: `${payload.digit}`,
+        };
+      }
+      if (
+        payload.digit === '.' &&
+        state.currentOperand &&
+        state.currentOperand.includes('.')
+      ) {
         return state;
       }
       if (payload.digit === '.') {
@@ -50,7 +59,7 @@ function reducer(state: any, { type, payload }: any) {
       }
       return {
         ...state,
-        currentOperand: state.currentOperand.slice(0, -1),
+        currentOperand: state.currentOperand.slice(0, -1) || "",
       };
     case ACTION.OPERATION:
       if (state.currentOperand === null && state.previousOperand === null) {
@@ -68,7 +77,10 @@ function reducer(state: any, { type, payload }: any) {
           currentOperand: 'ERROR',
         };
       }
-      if (state.previousOperand === null || state.previousOperand === undefined) {
+      if (
+        state.previousOperand === null ||
+        state.previousOperand === undefined
+      ) {
         return {
           ...state,
           operation: payload.operation,
@@ -82,16 +94,20 @@ function reducer(state: any, { type, payload }: any) {
         operation: payload.operation,
         previousOperand: evaluate(state),
       };
-      case ACTION.EVALUATE: 
-      if(state.currentOperand === null || state.previousOperand === null || state.operation === null ) {
-        return state
+    case ACTION.EVALUATE:
+      if (
+        state.currentOperand === null ||
+        state.previousOperand === null ||
+        state.operation === null
+      ) {
+        return state;
       }
       return {
         ...state,
         previousOperand: null,
         operation: null,
-        currentOperand: evaluate(state)
-      }
+        currentOperand: evaluate(state),
+      };
   }
 }
 
@@ -106,7 +122,7 @@ function evaluate({ currentOperand, previousOperand, operation }: any) {
   let result = 0;
   switch (operation) {
     case '+':
-      result = previousNumber + currentNumber;
+      result = (previousNumber + currentNumber);
       break;
     case '-':
       result = previousNumber - currentNumber;
@@ -116,9 +132,9 @@ function evaluate({ currentOperand, previousOperand, operation }: any) {
       break;
     case '÷':
       result = previousNumber / currentNumber;
-      break
+      break;
   }
-  return result;
+  return (Math.round(result *1000) / 1000);
 }
 
 const Calculator = () => {
@@ -174,6 +190,6 @@ const Calculator = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Calculator;

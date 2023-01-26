@@ -12,17 +12,18 @@ const Contact = () => {
   
   return (
     <Box sx={{ position: 'relative' }}>
-      <Box sx={{ height: '100vh', zIndex: 2 }}>
+      <Box sx={{ height: '100vh', zIndex: 2, width: "100vw", borderRadius: "25px" }}>
         <Home />
       </Box>
       <Box
         sx={{
           minHeight: '100vh',
+          // minWidth: "100vw",
           background: '#313030',
-          position: 'sticky',
-          top: 0,
-          zIndex: 10,
-          paddingTop: 5,
+          // position: 'sticky',
+          // top: 0,
+          // zIndex: 10,
+          // paddingTop: 5,
         }}
 >
         <About />
@@ -35,7 +36,7 @@ const Contact = () => {
           height: 'fit-content',
           background: '#313030',
           position: 'sticky',
-          zIndex: 50,
+          zIndex: 100,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',

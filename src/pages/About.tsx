@@ -12,23 +12,25 @@ const About = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  console.log(scrollY);
   return (
-    <div style={{height: "100%"}}>
+    <div style={{ height: '100vh' }}>
       <Box className='ContentBox'>
         <img alt='Me' src={MyPhoto} className='MyPhoto MyPhotoAbout' />
         <Box
-        // className='TextBoxAbout'
-        className={scrollY > 600 ? "Fixed" : "TextBoxAbout" }
-
+          // className='TextBoxAbout'
+          className={scrollY > 600 ? 'Fixed' : 'TextBoxAbout'}
         >
           <Typography variant='h6' sx={{ paddingBottom: 1 }}>
             You can download my CV{' '}
-            <a className='AboutLinks' href='../Does it work.docx' download='Filip-Brady-CV.docx'>
+            <a
+              className='AboutLinks'
+              href='../Does it work.docx'
+              download='Filip-Brady-CV.docx'
+            >
               here.
             </a>
           </Typography>
-          <Typography variant='h6'>
+          {/* <Typography variant='h6'>
             Courently I am working on a Start-Up as a manager of a advertising
             site. I learned how to run Google Ads, Meta Ads, design posts for
             social media in Figma, analize data from Google Analytics. However I
@@ -76,7 +78,34 @@ const About = () => {
               Github
             </a>{' '}
             (alltough most of my projects are private).
-          </Typography>
+          </Typography> */}
+          <ul className='list-ic vertical'>
+            <li>
+              <span>2021 </span>
+              Finishing Gramer school
+            </li>
+            <li>
+              <span>December 2021 </span>
+              Started working at Elmoza s.r.o on Stratup project Subkontrakt.sk
+            </li>
+            <li>
+              <span>January 2022 </span>
+              Started Learning Google Ads, Analitycs,
+              Meta Ads...
+            </li>
+            <li>
+              <span>2022 </span>
+              Started learning Html, Css and Javascript
+            </li>
+            <li>
+              <span>End of 2022 </span>
+              Started learning React JS
+            </li>
+            <li>
+              <span>2022 </span>
+              Moving to Netherlands
+            </li>
+          </ul>
         </Box>
       </Box>
     </div>
