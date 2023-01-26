@@ -7,17 +7,19 @@ const Home = () => {
   return (
     <div>
       <Box className='ContentBox'>
-        <Box className='TextBoxHome'>
-          <Typography variant='h5'>Hello, I am Filip</Typography>
-          <Typography variant='h4'>Frontend Developer</Typography>
-          <Typography variant='h6'>
-            I am a self-taught frontend Developer. I learned frontend
-            development mainly from online courses. Currently, I am focusing on
-            React JS. In the future, I plan to learn backend and working with
-            databases. I love learning new things and new challenges. If you
-            like me or my work, do not hesitate and contact me.
-          </Typography>
-          <Link
+        <Box className='TextBoxHome boxOuter'>
+          <Box className='boxInner'>
+            <Typography variant='h5'>Hello, I am Filip</Typography>
+            <Typography variant='h4'>Frontend Developer</Typography>
+            <Typography variant='h6'>
+              I am a self-taught frontend Developer. I learned frontend
+              development mainly from online courses. Currently, I am focusing
+              on React JS. In the future, I plan to learn backend and working
+              with databases. I love learning new things and new challenges. If
+              you like me or my work, do not hesitate and contact me.
+            </Typography>
+          </Box>
+          {/* <Link
             style={{
               textDecoration: 'none',
               fontSize: '18px',
@@ -26,8 +28,8 @@ const Home = () => {
             }}
             to={routes.about}
           >
-            Learn more =&gt;{' '}
-          </Link>
+          Learn more =&gt;{' '}
+        </Link> */}
         </Box>
         <img alt='Me' src={MyPhoto} className='MyPhoto' />
       </Box>

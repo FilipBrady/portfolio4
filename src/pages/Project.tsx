@@ -7,6 +7,9 @@ import { useState } from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Calculator from '../components/CalculatorApp/Calculator';
+import HomeIcon from '@mui/icons-material/Home';
+import { routes } from '../components/types/routes';
+import { Link } from 'react-router-dom';
 
 const Project = () => {
   const [photoCount, setPhotoCount] = useState(0);
@@ -29,174 +32,179 @@ const Project = () => {
 
   return (
     <div>
+      <Link to={routes.contact}>
+      <Button sx={{position: "absolute", top: "1%", left: "1%", color: "white"}}><HomeIcon sx={{fontSize: "25px"}} /></Button>
+      </Link>
       {ProjectData.map(project => {
-        if (project.thumbId === id && project.thumbId !== "calculator") {
-          return (
-            <Box sx={{ padding: 2, paddingBottom: 4 }}>
-              <Box sx={{ textAlign: 'center', paddingY: 2 }}>
-                <Typography variant='h5' sx={{ paddingTop: 2 }}>
-                  {project.thumbHeader}
-                </Typography>
-                <Typography variant='h6'>{project.thumbDesc}</Typography>
-                <Tooltip
-                  title='Full code on Github'
-                  placement='left'
-                  enterDelay={10}
-                  leaveDelay={500}
+        if (project.thumbId === id) {
+          if (project.thumbId !== 'calculator') {
+            return (
+              <Box sx={{ paddingX: 2}}>
+                <Box sx={{ textAlign: 'center', paddingY: 2 }}>
+                  <Typography variant='h5' sx={{ paddingTop: 2 }}>
+                    {project.thumbHeader}
+                  </Typography>
+                  <Typography variant='h6'>{project.thumbDesc}</Typography>
+                  <Tooltip
+                    title='Full code on Github'
+                    placement='left'
+                    enterDelay={10}
+                    leaveDelay={500}
+                  >
+                    <Typography
+                      variant='h2'
+                      sx={{ marginY: 2, width: 'fit-content', marginX: 'auto' }}
+                    >
+                      {' '}
+                      <a
+                        href={project.MoreBtnLink}
+                        style={{ color: 'white', textDecoration: 'none' }}
+                      >
+                        <GitHubIcon sx={{ fontSize: '5rem' }} />
+                      </a>{' '}
+                    </Typography>
+                  </Tooltip>
+                </Box>
+
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: 'fit-content',
+                  }}
                 >
                   <Typography
-                    variant='h2'
-                    sx={{ marginY: 2, width: 'fit-content', marginX: 'auto' }}
+                    variant='h6'
+                    sx={{ maxWidth: '450px', paddingBottom: 4 }}
                   >
-                    {' '}
-                    <a
-                      href={project.MoreBtnLink}
-                      style={{ color: 'white', textDecoration: 'none' }}
-                    >
-                      <GitHubIcon sx={{ fontSize: '5rem' }} />
-                    </a>{' '}
+                    {project.projectDescription[photoCount].label}
                   </Typography>
-                </Tooltip>
+                  <div className='ProjectPhotosBox'>
+                    <Box className='BtnFrom650px'>
+                      <Button
+                        sx={{ color: 'white' }}
+                        disabled={photoCount === 0}
+                        onClick={handlePreviousPhoto}
+                      >
+                        <ArrowBackIosNewIcon />{' '}
+                      </Button>
+                    </Box>
+                    <Box className='ProjectImg'>
+                      <img
+                        alt={project.thumbDesc}
+                        src={IMG(project.projectDescription[photoCount].photo)}
+                        style={{ maxHeight: '500px', borderRadius: '25px' }}
+                      />
+                    </Box>
+                    <Box className='BtnFrom650px'>
+                      <Button
+                        sx={{ color: 'white' }}
+                        disabled={
+                          photoCount === project.projectDescription.length - 1
+                        }
+                        onClick={() =>
+                          handleNextPhoto(project.projectDescription.length)
+                        }
+                      >
+                        {' '}
+                        <ArrowForwardIosIcon />{' '}
+                      </Button>
+                    </Box>
+                    <Box className='BtnTo650px'>
+                      <Button
+                        sx={{ color: 'white' }}
+                        disabled={photoCount === 0}
+                        onClick={handlePreviousPhoto}
+                      >
+                        <ArrowBackIosNewIcon />{' '}
+                      </Button>
+                      <Button
+                        sx={{ color: 'white' }}
+                        disabled={
+                          photoCount === project.projectDescription.length - 1
+                        }
+                        onClick={() =>
+                          handleNextPhoto(project.projectDescription.length)
+                        }
+                      >
+                        {' '}
+                        <ArrowForwardIosIcon />{' '}
+                      </Button>
+                    </Box>
+                  </div>
+                </Box>
               </Box>
-
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  justifyContent: 'space-around',
-                  alignItems: 'center',
-                  height: 'fit-content',
-                }}
-              >
-                <Typography
-                  variant='h6'
-                  sx={{ maxWidth: '450px', paddingBottom: 4 }}
-                >
-                  {project.projectDescription[photoCount].label}
-                </Typography>
+            );
+          } else {
+            return (
+              <Box sx={{ paddingX: 2 }}>
+                <Box sx={{ textAlign: 'center', paddingY: 2 }}>
+                  <Typography variant='h5' sx={{ paddingTop: 2 }}>
+                    {project.thumbHeader}
+                  </Typography>
+                  <Typography variant='h6'>{project.thumbDesc}</Typography>
+                  <Tooltip
+                    title='Full code on Github'
+                    placement='left'
+                    enterDelay={10}
+                    leaveDelay={500}
+                  >
+                    <Typography
+                      variant='h2'
+                      sx={{ marginY: 2, width: 'fit-content', marginX: 'auto' }}
+                    >
+                      {' '}
+                      <a
+                        href={project.MoreBtnLink}
+                        style={{ color: 'white', textDecoration: 'none' }}
+                      >
+                        <GitHubIcon sx={{ fontSize: '5rem' }} />
+                      </a>{' '}
+                    </Typography>
+                  </Tooltip>
+                </Box>
                 <Box
                   sx={{
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
+                    flexWrap: "wrap"
                   }}
                 >
-                  <Button
-                    sx={{ color: 'white' }}
-                    disabled={photoCount === 0}
-                    onClick={handlePreviousPhoto}
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      flexWrap: "wrap"
+                    }}
+                    className='ProjectCalculatorBox'
                   >
-                    <ArrowBackIosNewIcon />{' '}
-                  </Button>
-                  <Box className='ProjectImg'>
-                    <img
-                      alt={project.thumbDesc}
-                      src={IMG(project.projectDescription[photoCount].photo)}
-                      style={{ maxWidth: '500px', borderRadius: '25px' }}
-                    />
+                    {project.projectDescription.map(projDesc => (
+                      <Typography
+                        variant='h6'
+                        sx={{
+                          maxWidth: '450px',
+                          textAlign: 'left',
+                          marginY: 1,
+                        }}
+                      >
+                        {projDesc.label}
+                      </Typography>
+                    ))}
                   </Box>
-                  <Button
-                    sx={{ color: 'white' }}
-                    disabled={
-                      photoCount === project.projectDescription.length - 1
-                    }
-                    onClick={() =>
-                      handleNextPhoto(project.projectDescription.length)
-                    }
-                  >
-                    {' '}
-                    <ArrowForwardIosIcon />{' '}
-                  </Button>
+                  <Box>
+                  <Calculator />
+                  </Box>
                 </Box>
               </Box>
-            </Box>
-          );
-        } else if(project.thumbId === "calculator") {
-          return (
-            <Box sx={{ padding: 2, paddingBottom: 4 }}>
-              <Box sx={{ textAlign: 'center', paddingY: 2 }}>
-                <Typography variant='h5' sx={{ paddingTop: 2 }}>
-                  {project.thumbHeader}
-                </Typography>
-                <Typography variant='h6'>{project.thumbDesc}</Typography>
-                <Tooltip
-                  title='Full code on Github'
-                  placement='left'
-                  enterDelay={10}
-                  leaveDelay={500}
-                >
-                  <Typography
-                    variant='h2'
-                    sx={{ marginY: 2, width: 'fit-content', marginX: 'auto' }}
-                  >
-                    {' '}
-                    <a
-                      href={project.MoreBtnLink}
-                      style={{ color: 'white', textDecoration: 'none' }}
-                    >
-                      <GitHubIcon sx={{ fontSize: '5rem' }} />
-                    </a>{' '}
-                  </Typography>
-                </Tooltip>
-              </Box>
-
-              {/* <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  justifyContent: 'space-around',
-                  alignItems: 'center',
-                  height: 'fit-content',
-                }}
-              >
-                <Typography
-                  variant='h6'
-                  sx={{ maxWidth: '450px', paddingBottom: 4 }}
-                >
-                  {project.projectDescription[photoCount].label}
-                </Typography>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Button
-                    sx={{ color: 'white' }}
-                    disabled={photoCount === 0}
-                    onClick={handlePreviousPhoto}
-                  >
-                    <ArrowBackIosNewIcon />{' '}
-                  </Button>
-                  <Box className='ProjectImg'>
-                    <img
-                      alt={project.thumbDesc}
-                      src={IMG(project.projectDescription[photoCount].photo)}
-                      style={{ maxWidth: '500px', borderRadius: '25px' }}
-                    />
-                  </Box>
-                  <Button
-                    sx={{ color: 'white' }}
-                    disabled={
-                      photoCount === project.projectDescription.length - 1
-                    }
-                    onClick={() =>
-                      handleNextPhoto(project.projectDescription.length)
-                    }
-                  >
-                    {' '}
-                    <ArrowForwardIosIcon />{' '}
-                  </Button>
-                </Box>
-              </Box> */}
-              <Calculator />
-            </Box>
-          )
+            );
+          }
         }
       })}
     </div>

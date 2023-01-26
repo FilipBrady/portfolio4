@@ -1,48 +1,31 @@
-import { Box, Typography } from '@mui/material';
-import TodoThumb from '../../images/todoapp/today-todos-medium.png';
+import { Box } from '@mui/material';
+import TodoThumb from '../../images/ako thumbn/Todo-app3.png';
 import { Link } from 'react-router-dom';
 import { ProjectData } from '../../components/types/ProjectsData';
 import { routes } from '../../components/types/routes';
+import { useState } from 'react';
 
 const TodoThumbSingle = () => {
-  const IMG = (imgName: any) => {
-    return require(`../../images/${imgName}`);
-  };
+  const [isHovered, setIsHovered] = useState(false);
   return (
-    <div
-    className='ProjectThumb todo'
-    >
+    <div className='ProjectThumb todo' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() =>setIsHovered(false)}>
       {ProjectData.map(Project => {
         if (Project.thumbId === 'todo') {
           return (
-            <Link to={`${routes.project}/${Project.thumbId}`}>
-            <Box>
-              <img
-                src={TodoThumb}
-                alt={Project.thumbHeader}
-                className='ProjectThumbnailPhoto'
-              />
-            </Box>
-          </Link>
+            <Link className='LearnMore' to={`${routes.project}/${Project.thumbId}`}>
+              <div className={isHovered ? "LearnMoreBtn" : "DisplayNone"}>Learn More</div>
+              <Box>
+                <img
+                  src={TodoThumb}
+                  alt={Project.thumbHeader}
+                  className='ProjectThumbnailPhoto'
+                />
+              </Box>
+            </Link>
           );
         }
       })}
     </div>
-    // <div>
-    //   {ProjectData.map(Project => (
-    //     <div className={`${Project.thumbId} ProjectThumb`}>
-    //       <Link to={`${routes.project}/${Project.thumbId}`}>
-    //         <Box>
-    //           <img
-    //             src={IMG(Project.thumbnail)}
-    //             alt={Project.thumbHeader}
-    //             className='ProjectThumbnailPhoto'
-    //           />
-    //         </Box>
-    //       </Link>
-    //     </div>
-    //   ))}
-    // </div>
   );
 };
 export default TodoThumbSingle;

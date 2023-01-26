@@ -17,7 +17,7 @@ const Projects = () => {
       <StackOverflowThumb /> */}
 
       {/* contact site: */}
-      <Box
+      {/* <Box
         sx={{
           minHeight: '150vh',
           background: '#313030',
@@ -46,8 +46,8 @@ const Projects = () => {
             <StackThumbSingle />
           </Parallax>
         </ParallaxProvider>
-      </Box>
-      {/* <Box
+      </Box> */}
+      <Box
         sx={{
           minHeight: '150vh',
           background: '#313030',
@@ -58,11 +58,12 @@ const Projects = () => {
         }}
         className='Projects'
       >
-        <Box>
-          <Typography variant='h4'>My Work</Typography>
+        <Box sx={{marginX: 2}}>
+          <Typography variant='h4' sx={{padding: 2}}>My Work</Typography>
         </Box>
         <Box
           sx={{
+            marginTop: 2,
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
@@ -76,7 +77,7 @@ const Projects = () => {
           <SpendingThumbSingle />
           <StackThumbSingle />
         </Box>
-      </Box> */}
+      </Box>
     </div>
   );
 };
