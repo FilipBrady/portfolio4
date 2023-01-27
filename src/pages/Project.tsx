@@ -40,6 +40,7 @@ const Project = () => {
   const minIndex = ProjectData.length - ProjectData.length;
   const lastProject = ProjectData[maxIndex];
   const firstProject = ProjectData[minIndex];
+  
   return (
     <div>
       <Link
