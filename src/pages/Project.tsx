@@ -10,6 +10,8 @@ import Calculator from '../components/CalculatorApp/Calculator';
 import HomeIcon from '@mui/icons-material/Home';
 import { routes } from '../components/types/routes';
 import { Link } from 'react-router-dom';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const Project = () => {
   const [photoCount, setPhotoCount] = useState(0);
@@ -29,18 +31,32 @@ const Project = () => {
       setPhotoCount(photoCount - 1);
     }
   };
-
+  const currentIndex = ProjectData.findIndex(project => project.thumbId === id);
+  const nextIndex = (currentIndex + 1) % ProjectData.length;
+  const nextProject = ProjectData[nextIndex];
+  const previousIndex = (currentIndex - 1) % ProjectData.length;
+  const previousProject = ProjectData[previousIndex];
+  const maxIndex = ProjectData.length - 1;
+  const minIndex = ProjectData.length - ProjectData.length;
+  const lastProject = ProjectData[maxIndex];
+  const firstProject = ProjectData[minIndex];
   return (
     <div>
-      <Link to={routes.contact}>
-      <Button sx={{position: "absolute", top: "1%", left: "1%", color: "white"}}><HomeIcon sx={{fontSize: "25px"}} /></Button>
+      <Link
+        to={routes.contact}
+        style={{ position: 'fixed', top: '1%', left: '1%' }}
+      >
+        <Button sx={{ color: 'white' }}>
+          <HomeIcon sx={{ fontSize: '25px' }} />
+        </Button>
       </Link>
       {ProjectData.map(project => {
         if (project.thumbId === id) {
           if (project.thumbId !== 'calculator') {
             return (
-              <Box sx={{ paddingX: 2}}>
-                <Box sx={{ textAlign: 'center', paddingY: 2 }}>
+              <Box sx={{ paddingX: 2 }}>
+                
+                <Box sx={{ textAlign: 'center', paddingY: 0 }}>
                   <Typography variant='h5' sx={{ paddingTop: 2 }}>
                     {project.thumbHeader}
                   </Typography>
@@ -58,7 +74,7 @@ const Project = () => {
                       {' '}
                       <a
                         href={project.MoreBtnLink}
-                        style={{ color: 'white', textDecoration: 'none' }}
+                        className='LinkNextPreviousProject'
                       >
                         <GitHubIcon sx={{ fontSize: '5rem' }} />
                       </a>{' '}
@@ -136,11 +152,152 @@ const Project = () => {
                     </Box>
                   </div>
                 </Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    marginY: 3
+                  }}
+                >
+                  <Box>
+                    {previousIndex === minIndex - 1 ? (
+                      <Link
+                        to={`${routes.project}/${lastProject.thumbId}`}
+                        className='LinkNextPreviousProject'
+                      >
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Typography variant='h6'>
+                            {lastProject.thumbHeader}
+                          </Typography>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <ArrowBackIcon />
+                            <Typography variant='body2'>
+                              Previous Project
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Link>
+                    ) : (
+                      <Link
+                        to={`${routes.project}/${previousProject.thumbId}`}
+                        className='LinkNextPreviousProject'
+                      >
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Typography variant='h6'>
+                            {previousProject.thumbHeader}
+                          </Typography>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <ArrowBackIcon />
+                            <Typography variant='body2'>
+                              Previous Project
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Link>
+                    )}
+                  </Box>
+                  <Box>
+                    {nextIndex === maxIndex + 1 ? (
+                      <Link
+                        to={`${routes.project}/${firstProject.thumbId}`}
+                        className='LinkNextPreviousProject'
+                      >
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Typography variant='h6'>
+                            {firstProject.thumbHeader}
+                          </Typography>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <Typography variant='body2'>
+                              Next Project
+                            </Typography>
+                            <ArrowForwardIcon />
+                          </Box>
+                        </Box>
+                      </Link>
+                    ) : (
+                      <Link
+                        to={`${routes.project}/${nextProject.thumbId}`}
+                        className='LinkNextPreviousProject'
+                      >
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Typography variant='h6'>
+                            {nextProject.thumbHeader}
+                          </Typography>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <Typography variant='body2'>
+                              Next Project
+                            </Typography>
+                            <ArrowForwardIcon />
+                          </Box>
+                        </Box>
+                      </Link>
+                    )}
+                  </Box>
+                </Box>
               </Box>
             );
           } else {
             return (
               <Box sx={{ paddingX: 2 }}>
+                
                 <Box sx={{ textAlign: 'center', paddingY: 2 }}>
                   <Typography variant='h5' sx={{ paddingTop: 2 }}>
                     {project.thumbHeader}
@@ -159,7 +316,7 @@ const Project = () => {
                       {' '}
                       <a
                         href={project.MoreBtnLink}
-                        style={{ color: 'white', textDecoration: 'none' }}
+                        className='LinkNextPreviousProject'
                       >
                         <GitHubIcon sx={{ fontSize: '5rem' }} />
                       </a>{' '}
@@ -172,7 +329,7 @@ const Project = () => {
                     flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    flexWrap: "wrap"
+                    flexWrap: 'wrap',
                   }}
                 >
                   <Box
@@ -181,7 +338,7 @@ const Project = () => {
                       flexDirection: 'column',
                       justifyContent: 'center',
                       alignItems: 'center',
-                      flexWrap: "wrap"
+                      flexWrap: 'wrap',
                     }}
                     className='ProjectCalculatorBox'
                   >
@@ -199,7 +356,147 @@ const Project = () => {
                     ))}
                   </Box>
                   <Box>
-                  <Calculator />
+                    <Calculator />
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    marginY: 3
+                  }}
+                >
+                  <Box>
+                    {previousIndex === minIndex - 1 ? (
+                      <Link
+                        to={`${routes.project}/${lastProject.thumbId}`}
+                        className='LinkNextPreviousProject'
+                      >
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Typography variant='h6'>
+                            {lastProject.thumbHeader}
+                          </Typography>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <ArrowBackIcon />
+                            <Typography variant='body2'>
+                              Previous Project
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Link>
+                    ) : (
+                      <Link
+                        to={`${routes.project}/${previousProject.thumbId}`}
+                        className='LinkNextPreviousProject'
+                      >
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Typography variant='h6'>
+                            {previousProject.thumbHeader}
+                          </Typography>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <ArrowBackIcon />
+                            <Typography variant='body2'>
+                              Previous Project
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Link>
+                    )}
+                  </Box>
+                  <Box>
+                    {nextIndex === maxIndex + 1 ? (
+                      <Link
+                        to={`${routes.project}/${firstProject.thumbId}`}
+                        className='LinkNextPreviousProject'
+                      >
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Typography variant='h6'>
+                            {firstProject.thumbHeader}
+                          </Typography>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <Typography variant='body2'>
+                              Next Project
+                            </Typography>
+                            <ArrowForwardIcon />
+                          </Box>
+                        </Box>
+                      </Link>
+                    ) : (
+                      <Link
+                        to={`${routes.project}/${nextProject.thumbId}`}
+                        className='LinkNextPreviousProject'
+                      >
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Typography variant='h6'>
+                            {nextProject.thumbHeader}
+                          </Typography>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <Typography variant='body2'>
+                              Next Project
+                            </Typography>
+                            <ArrowForwardIcon />
+                          </Box>
+                        </Box>
+                      </Link>
+                    )}
                   </Box>
                 </Box>
               </Box>

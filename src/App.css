@@ -37,6 +37,25 @@ body {
   /* margin: 0; */
   /* padding: 0; */
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(44, 44, 44);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b6b6b6;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
 
 .LinkStyles {
   color: white;
@@ -372,6 +391,15 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+.LinkNextPreviousProject {
+  color: white;
+  text-decoration: none;
+}
+
+.LinkNextPreviousProject:hover,
+.LinkNextPreviousProject:active {
+  text-decoration: underline;
 }
 
 @media (max-width: 650px) {
