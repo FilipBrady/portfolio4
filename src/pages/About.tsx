@@ -30,7 +30,7 @@ const About = () => {
               here.
             </a>
           </Typography>
-          {/* <Typography variant='h6'>
+          <Typography variant='h6'>
             Courently I am working on a Start-Up as a manager of a advertising
             site. I learned how to run Google Ads, Meta Ads, design posts for
             social media in Figma, analize data from Google Analytics. However I
@@ -78,11 +78,11 @@ const About = () => {
               Github
             </a>{' '}
             (alltough most of my projects are private).
-          </Typography> */}
-          <ul className='list-ic vertical'>
+          </Typography>
+          {/* <ul className='list-ic vertical'>
             <li>
               <span>2021 </span>
-              Finishing Gramer school
+              Finishing Highschool
             </li>
             <li>
               <span>December 2021 </span>
@@ -105,7 +105,7 @@ const About = () => {
               <span>2022 </span>
               Moving to Netherlands
             </li>
-          </ul>
+          </ul> */}
         </Box>
       </Box>
     </div>
