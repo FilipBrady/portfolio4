@@ -15,7 +15,7 @@ const About = () => {
   return (
     <div style={{ height: '100vh' }}>
       <Box className='ContentBox'>
-        <img alt='Me' src={MyPhoto} className='MyPhoto MyPhotoAbout' />
+        {/* <img alt='Me' src={MyPhoto} className='MyPhoto MyPhotoAbout' /> */}
         <Box
           // className='TextBoxAbout'
           className={scrollY > 600 ? 'Fixed' : 'TextBoxAbout'}
