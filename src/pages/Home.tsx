@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
 import MyPhoto from '../images/myPhoto-removebg-preview.png';
-import { routes } from '../components/types/routes';
 import { Box, Typography } from '@mui/material';
 import { useRef, useEffect } from 'react';
+import { useState } from 'react';
 
 let interval1: any = null;
 let interval2: any = null;
@@ -54,12 +53,27 @@ const Home = () => {
   const elementRef1 = useRef(null);
   const elementRef2 = useRef(null);
 
+  const [isImgAnimated, setIsImgAnimated] = useState(true);
+
   useEffect(() => {
+    if (localStorage.getItem('isFirstTimeLoad') === null) {
+      setTimeout(() => {
+        setIsImgAnimated(false);
+        localStorage.setItem('isFirstTimeLoad', 'false');
+      }, 3000);
+      window.onbeforeunload = () => {
+        localStorage.removeItem('isFirstTimeLoad');
+      };
+    } else {
+      setIsImgAnimated(false);
+    }
+    
     setTimeout(() => {
       handleMouseOver1(elementRef1);
       handleMouseOver2(elementRef2);
     }, 3000);
   }, []);
+
 
   return (
     <div>
@@ -82,8 +96,6 @@ const Home = () => {
             </Typography>
             <Typography
               variant='h6'
-              // data-value='I am a self-taught frontend Developer. I learned frontend development mainly from online courses. Currently, I am focusing on React JS. In the future, I plan to learn backend and working with databases. I love learning new things and new challenges. If you like me or my work, do not hesitate and contact me.'
-              // ref={elementRef}
             >
               I am a self-taught frontend Developer. I learned frontend
               development mainly from online courses. Currently, I am focusing
@@ -92,19 +104,10 @@ const Home = () => {
               you like me or my work, do not hesitate and contact me.
             </Typography>
           </Box>
-          {/* <Link
-            style={{
-              textDecoration: 'none',
-              fontSize: '18px',
-              fontWeight: '600',
-              color: '#00C2FF',
-            }}
-            to={routes.about}
-          >
-          Learn more =&gt;{' '}
-        </Link> */}
         </Box>
-        <img alt='Me' src={MyPhoto} className='MyPhoto' />
+        <div className='PhotoBox'>
+        <img alt='Me' src={MyPhoto} className={isImgAnimated ? 'MyPhoto' : 'MyPhoto MyPhotoAnimation'} />
+        </div>
       </Box>
     </div>
   );

@@ -27,7 +27,7 @@ const Contact = () => {
 
   return (
     <Box sx={{ position: 'relative' }}>
-      {/* <div className={!isLoadingScreen ? 'DisplayNone' : 'LoadingScreen'}>
+      <div className={!isLoadingScreen ? 'DisplayNone' : 'LoadingScreen'}>
         <div className='LoadingBox'>
           <div style={{ display: 'flex' }}>
             <div className='Loading Ball1'></div>
@@ -36,10 +36,10 @@ const Contact = () => {
           </div>
           <div className='LoadingText1'>Please Wait</div>
         </div>
-      </div> */}
+      </div>
       <Box
         sx={{
-          height: '100vh',
+          minHeight: '100vh',
           zIndex: 2,
           width: '100vw',
           borderRadius: '25px',
@@ -50,12 +50,7 @@ const Contact = () => {
       <Box
         sx={{
           minHeight: '100vh',
-          // minWidth: "100vw",
           background: '#313030',
-          // position: 'sticky',
-          // top: 0,
-          // zIndex: 10,
-          // paddingTop: 5,
         }}
       >
         <About />
@@ -65,16 +60,17 @@ const Contact = () => {
       </Box>
       <Box
         sx={{
-          height: 'fit-content',
+          height: '100%',
           background: '#313030',
-          position: 'sticky',
-          zIndex: 100,
+          position: "sticky",
+          zIndex: 1000,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignContent: 'center',
           flexWrap: 'wrap',
           paddingY: '50px',
+          paddingX: 1
         }}
       >
         <Typography variant='h5' sx={{ marginTop: 3 }}>

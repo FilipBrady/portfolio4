@@ -1,14 +1,11 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 0px;
 }
 
 #root {
-  /* max-width: 1280px; */
   margin: 0 auto;
-  /* padding: 2rem; */
   text-align: center;
-  /* background-color: #313030; */
   overflow-x: hidden;
 }
 
@@ -30,12 +27,7 @@ body {
 }
 
 .App {
-  /* width: 1450px; */
-  /* margin: auto; */
-  /* height: 100vh; */
-  /* overflow-x: hidden; */
-  /* margin: 0; */
-  /* padding: 0; */
+  padding: 5px;
 }
 
 ::-webkit-scrollbar {
@@ -79,6 +71,9 @@ body {
   left: 150px;
   width: 35%;
   background-color: #313030;
+}
+
+.MyPhotoAnimation {
   animation: PhotoApear 2s;
 }
 
@@ -91,7 +86,6 @@ body {
   }
 
   to {
-    opacity: inherit;
     position: fixed;
     opacity: 100%;
     bottom: 0%;
@@ -122,6 +116,10 @@ body {
   height: 700px;
   z-index: 10;
   background-color: #313030;
+}
+.AboutContent {
+  height: 100vh;
+  width: 100vw;
 }
 
 /* LIST */
@@ -183,6 +181,7 @@ body {
   max-width: 700px;
   top: calc(50% - 129px);
   left: 50%;
+  margin-left: 5px;
   text-align: left;
   /* grid-column-start: 3;
   grid-column-end: 5;
@@ -192,7 +191,6 @@ body {
 }
 
 .boxOuter {
-  background-color: #2c2c2c;
   padding: 5px;
   border: 2px solid #00C2FF;
 }
@@ -209,7 +207,9 @@ body {
   line-height: 12px;
   top: 5px;
   text-align: center;
+  z-index: 5;
 }
+
 
 .boxOuter:before {
   left: 5px;
@@ -223,6 +223,11 @@ body {
   position: relative;
   border: 2px solid #00C2FF;
   padding: 40px;
+}
+
+.boxInner {
+  background-color: #2c2c2c;
+
 }
 
 .boxInner:before,
@@ -382,6 +387,7 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 10px 0;
 }
 
 .footerSocMedia li {
@@ -419,9 +425,51 @@ body {
 }
 
 @media (max-width: 650px) {
+  .boxOuter {
+    border: none;
+    width: fit-content;
+  }
+  .ContentBox {
+    display: block;
+  }
+  .TextBoxAbout, .Fixed {
+    display: inline-block;
+  }
+  .AboutContent {
+    height: 100%;
+  }
   .ProjectPhotosBox {
     flex-direction: column;
   }
+
+  .MyPhoto {
+    display: block;
+    position: inherit;
+    margin: 0 auto;
+    max-width: 60%;
+    width: -moz-fit-content;
+    width: fit-content;
+    min-width: 60%;
+  }
+
+  .MyPhotoAnimation {
+    animation: PhotoApear 2s;
+  }
+
+  @keyframes PhotoApear {
+    from {
+      opacity: 0%;
+      position: inherit;
+    }
+
+    to {
+
+      position: inherit;
+      opacity: 100%;
+    }
+
+  }
+
 
   .BtnFrom650px {
     display: none;
@@ -446,13 +494,36 @@ body {
     padding: 0 2%
   }
 
+  .PhotoBox {
+    height: 100%;
+    display: inline-block;
+  }
+
   .MyPhoto {
     display: block;
     position: inherit;
     margin: 0 auto;
-    max-width: 80%;
+    max-width: 60%;
     width: fit-content;
     min-width: 60%;
+  }
+
+  .MyPhotoAnimation {
+    animation: PhotoApear 2s;
+  }
+
+  @keyframes PhotoApear {
+    from {
+      opacity: 0%;
+      position: inherit;
+    }
+
+    to {
+
+      position: inherit;
+      opacity: 100%;
+    }
+
   }
 
   .MyPhotoAbout {
@@ -462,7 +533,7 @@ body {
   .ContentBox {
     display: block;
     width: 96%;
-    margin: 0 2%;
+    margin: 15px 0 0 0;
   }
 
   .TextBoxHome,
@@ -473,6 +544,11 @@ body {
     margin: auto;
     padding: 15px;
     margin-top: 20px;
+    margin: 15px auto 0;
+  }
+
+  .TextBoxHome {
+    /* margin-top: 20px; */
   }
 
   .Fixed {
@@ -501,6 +577,13 @@ body {
   .stackOver,
   .eshop {
     position: inherit;
+  }
+
+  .boxOuter:before,
+  .boxOuter:after,
+  .boxInner:before,
+  .boxInner:after {
+    display: none;
   }
 }
 
