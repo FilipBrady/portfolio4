@@ -4,37 +4,62 @@ import { routes } from '../components/types/routes';
 import { Box, Typography } from '@mui/material';
 import { useRef, useEffect } from 'react';
 
-let interval: any = null;
+let interval1: any = null;
+let interval2: any = null;
 
-const handleMouseOver = (elementRef: any) => {
+const handleMouseOver1 = (elementRef1: any) => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let iterations = 0;
-  clearInterval(interval);
-  interval = setInterval(() => {
-    elementRef.current.innerText = elementRef.current.innerText
+  clearInterval(interval1);
+  interval1 = setInterval(() => {
+    elementRef1.current.innerText = elementRef1.current.innerText
       .split('')
       .map((letter: any, index: any) => {
         if (index < iterations) {
-          return elementRef.current.dataset.value[index];
+          return elementRef1.current.dataset.value[index];
         }
         return letters[Math.floor(Math.random() * 26)];
       })
       .join('');
 
-    if (iterations >= elementRef.current.dataset.value.length) {
-      clearInterval(interval);
+    if (iterations >= elementRef1.current.dataset.value.length) {
+      clearInterval(interval1);
+    }
+    iterations += 1 / 3;
+  }, 30);
+};
+const handleMouseOver2 = (elementRef2: any) => {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let iterations = 0;
+  clearInterval(interval2);
+  interval2 = setInterval(() => {
+    elementRef2.current.innerText = elementRef2.current.innerText
+      .split('')
+      .map((letter: any, index: any) => {
+        if (index < iterations) {
+          return elementRef2.current.dataset.value[index];
+        }
+        return letters[Math.floor(Math.random() * 26)];
+      })
+      .join('');
+
+    if (iterations >= elementRef2.current.dataset.value.length) {
+      clearInterval(interval2);
     }
     iterations += 1 / 3;
   }, 30);
 };
 
 const Home = () => {
-  const elementRef = useRef(null);
+  const elementRef1 = useRef(null);
+  const elementRef2 = useRef(null);
 
   useEffect(() => {
-    handleMouseOver(elementRef);
+    setTimeout(() => {
+      handleMouseOver1(elementRef1);
+      handleMouseOver2(elementRef2);
+    }, 3000);
   }, []);
-
 
   return (
     <div>
@@ -44,14 +69,14 @@ const Home = () => {
             <Typography
               variant='h5'
               data-value='Hello, I am Filip'
-              ref={elementRef}
+              ref={elementRef1}
             >
               Hello, I am Filip
             </Typography>
             <Typography
               variant='h4'
               data-value='Frontend Developer'
-              ref={elementRef}
+              ref={elementRef2}
             >
               Frontend Developer
             </Typography>

@@ -9,10 +9,42 @@ import { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 
 const Contact = () => {
-  
+  const [isLoadingScreen, setIsLoadingScreen] = useState(true);
+
+  useEffect(() => {
+    if (localStorage.getItem('isFirstTimeLoad') === null) {
+      setTimeout(() => {
+        setIsLoadingScreen(false);
+        localStorage.setItem('isFirstTimeLoad', 'false');
+      }, 3000);
+      window.onbeforeunload = () => {
+        localStorage.removeItem('isFirstTimeLoad');
+      };
+    } else {
+      setIsLoadingScreen(false);
+    }
+  }, []);
+
   return (
     <Box sx={{ position: 'relative' }}>
-      <Box sx={{ height: '100vh', zIndex: 2, width: "100vw", borderRadius: "25px" }}>
+      {/* <div className={!isLoadingScreen ? 'DisplayNone' : 'LoadingScreen'}>
+        <div className='LoadingBox'>
+          <div style={{ display: 'flex' }}>
+            <div className='Loading Ball1'></div>
+            <div className='Loading Ball2'></div>
+            <div className='Loading Ball3'></div>
+          </div>
+          <div className='LoadingText1'>Please Wait</div>
+        </div>
+      </div> */}
+      <Box
+        sx={{
+          height: '100vh',
+          zIndex: 2,
+          width: '100vw',
+          borderRadius: '25px',
+        }}
+      >
         <Home />
       </Box>
       <Box
@@ -25,7 +57,7 @@ const Contact = () => {
           // zIndex: 10,
           // paddingTop: 5,
         }}
->
+      >
         <About />
       </Box>
       <Box>
