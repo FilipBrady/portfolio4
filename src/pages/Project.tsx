@@ -55,7 +55,7 @@ const Project = () => {
         if (project.thumbId === id) {
           if (project.thumbId !== 'calculator') {
             return (
-              <Box sx={{ paddingX: 2 }}>
+              <Box sx={{ padding: 2 }}>
                 
                 <Box sx={{ textAlign: 'center', paddingY: 0 }}>
                   <Typography variant='h5' sx={{ paddingTop: 2 }}>

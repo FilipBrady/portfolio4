@@ -1,19 +1,23 @@
 import { Box, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { routes } from '../components/types/routes';
-import MyPhoto from '../images/myPhoto-removebg-preview.png';
 
 const About = () => {
   const [scrollY, setScrollY] = useState(0);
 
+  console.log(scrollY);
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (window.innerWidth > 1200) {
+      const handleScroll = () => setScrollY(window.scrollY);
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+    if (window.innerWidth < 1200) {
+      setScrollY(0);
+    }
   }, []);
+
   return (
-    <div style={{ height: '100vh' }}>
+    <div className='AboutContent'>
       <Box className='ContentBox'>
         {/* <img alt='Me' src={MyPhoto} className='MyPhoto MyPhotoAbout' /> */}
         <Box
@@ -46,7 +50,8 @@ const About = () => {
           <Typography variant='h6'>
             In case you like my work and you are interested in working with me,
             you can contact me throughout my{' '}
-            <a className='AboutLinks'
+            <a
+              className='AboutLinks'
               href='mailto:filipbrady@gmail.com'
               target={'_blank'}
               rel='noreferrer'
@@ -54,7 +59,8 @@ const About = () => {
               Email
             </a>
             ,{' '}
-            <a className='AboutLinks'
+            <a
+              className='AboutLinks'
               href='https://www.linkedin.com/in/filip-br%C3%A1dy-332560237/'
               target={'_blank'}
               rel='noreferrer'
@@ -62,7 +68,8 @@ const About = () => {
               LinkedIn
             </a>{' '}
             or{' '}
-            <a className='AboutLinks'
+            <a
+              className='AboutLinks'
               href='https://www.facebook.com/filip.brady/'
               target={'_blank'}
               rel='noreferrer'
@@ -70,7 +77,8 @@ const About = () => {
               Facebook
             </a>
             . You can look at my work on my{' '}
-            <a className='AboutLinks'
+            <a
+              className='AboutLinks'
               href='https://github.com/Fiiillliiippp'
               target={'_blank'}
               rel='noreferrer'
