@@ -18,11 +18,7 @@ const About = () => {
   return (
     <div className='AboutContent'>
       <Box className='ContentBox'>
-        {/* <img alt='Me' src={MyPhoto} className='MyPhoto MyPhotoAbout' /> */}
-        <Box
-          // className='TextBoxAbout'
-          className={scrollY > 550 ? 'Fixed' : 'TextBoxAbout'}
-        >
+        <Box className={scrollY > 550 ? 'Fixed' : 'TextBoxAbout'}>
           <Typography variant='h6' sx={{ paddingBottom: 1 }}>
             You can download my CV{' '}
             <a
@@ -86,33 +82,6 @@ const About = () => {
             </a>{' '}
             (alltough most of my projects are private).
           </Typography>
-          {/* <ul className='list-ic vertical'>
-            <li>
-              <span>2021 </span>
-              Finishing Highschool
-            </li>
-            <li>
-              <span>December 2021 </span>
-              Started working at Elmoza s.r.o on Stratup project Subkontrakt.sk
-            </li>
-            <li>
-              <span>January 2022 </span>
-              Started Learning Google Ads, Analitycs,
-              Meta Ads...
-            </li>
-            <li>
-              <span>2022 </span>
-              Started learning Html, Css and Javascript
-            </li>
-            <li>
-              <span>End of 2022 </span>
-              Started learning React JS
-            </li>
-            <li>
-              <span>2022 </span>
-              Moving to Netherlands
-            </li>
-          </ul> */}
         </Box>
       </Box>
     </div>

@@ -27,7 +27,7 @@ body {
 }
 
 .App {
-  padding: 5px;
+  padding: 0 5px;
 }
 
 ::-webkit-scrollbar {
@@ -125,59 +125,6 @@ body {
   height: 100vh;
   width: 100vw;
 }
-
-/* LIST
-.list-ic li {
-  position: relative;
-}
-
-.list-ic li span {
-  display: inline-block;
-  font-weight: 800;
-  width: fit-content;
-  height: 2em;
-  text-align: center;
-  padding: 5px 8px;
-  line-height: 2em;
-  border-radius: 1em;
-  background: #18bc9c;
-  color: white;
-  position: relative;
-}
-
-.list-ic li::before {
-  content: '';
-  position: absolute;
-  background: #18bc9c;
-  z-index: -1;
-}
-
-.list-ic.vertical {
-  padding: 0;
-  margin: 0;
-}
-
-.list-ic.vertical li {
-  list-style-type: none;
-  text-align: left;
-}
-
-.list-ic.vertical li span {
-  margin: .5em .2em;
-}
-
-.list-ic.vertical li::before {
-  top: -35px;
-  left: 13px;
-  width: 0.2em;
-  height: 4em;
-}
-
-.list-ic li:first-child::before {
-  display: none;
-} */
-
-
 
 .TextBoxHome {
   position: fixed;
@@ -598,7 +545,7 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-10lsgvu-MuiSvgIcon-root:active
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 100000;
 }
 
 .LoadingBox {

@@ -1,10 +1,7 @@
 import { Box } from '@mui/material';
-import TodoThumb from '../../images/ako thumbn/Todo-app3.png';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { ProjectData } from '../components/types/ProjectsData';
 import { routes } from '../components/types/routes';
-import { useParams } from 'react-router';
 
 type Props = {
   Project: {
@@ -26,7 +23,6 @@ type Props = {
 
 const ProjectThumbnail = ({ Project }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
-  const { id } = useParams();
   const IMG = (imgName: any) => {
     return require(`../images/ako thumbn/${imgName}`);
   };

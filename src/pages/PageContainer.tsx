@@ -62,7 +62,7 @@ const PageContainer = () => {
         sx={{
           height: '100%',
           background: '#313030',
-          position: "sticky",
+          position: 'sticky',
           zIndex: 1000,
           display: 'flex',
           flexDirection: 'column',
@@ -70,7 +70,7 @@ const PageContainer = () => {
           alignContent: 'center',
           flexWrap: 'wrap',
           paddingY: '50px',
-          paddingX: 1
+          paddingX: 1,
         }}
       >
         <Typography variant='h5' sx={{ marginTop: 3 }}>
@@ -116,7 +116,6 @@ const PageContainer = () => {
             </li>
           </ul>
         </Box>
-        <Box></Box>
       </Box>
     </Box>
   );

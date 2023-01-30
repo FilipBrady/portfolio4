@@ -1,13 +1,7 @@
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { useEffect, useRef, useState } from 'react';
 import { ProjectData } from '../components/types/ProjectsData';
 import ProjectThumbnail from './ProjectThumbnail';
-import CalculatorThumbSingle from './ProjectThumbnailsSingle/CalculatorThumbSingle';
-import EshopThumbSingle from './ProjectThumbnailsSingle/EshopThumbSingle';
-import SpendingThumbSingle from './ProjectThumbnailsSingle/SpendingThumbSingle';
-import StackThumbSingle from './ProjectThumbnailsSingle/StackThumbSingle';
-import TodoThumbSingle from './ProjectThumbnailsSingle/TodoThumbSingle';
 
 const Projects = () => {
   return (
@@ -42,11 +36,6 @@ const Projects = () => {
           {ProjectData.map(Project => (
             <ProjectThumbnail key={Project.id} Project={Project} />
           ))}
-          {/* <TodoThumbSingle />
-          <CalculatorThumbSingle />
-          <EshopThumbSingle />
-          <SpendingThumbSingle />
-          <StackThumbSingle /> */}
         </Box>
       </Box>
     </div>
