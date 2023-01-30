@@ -8,7 +8,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 
-const Contact = () => {
+const PageContainer = () => {
   const [isLoadingScreen, setIsLoadingScreen] = useState(true);
 
   useEffect(() => {
@@ -121,4 +121,4 @@ const Contact = () => {
     </Box>
   );
 };
-export default Contact;
+export default PageContainer;

@@ -7,9 +7,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='App'>
-        {/* <TheNavigation /> */}
-        
+      <div className='App'>        
         <RouterComponent />
       </div>
     </BrowserRouter>

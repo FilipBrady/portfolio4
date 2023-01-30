@@ -40,11 +40,11 @@ const Project = () => {
   const minIndex = ProjectData.length - ProjectData.length;
   const lastProject = ProjectData[maxIndex];
   const firstProject = ProjectData[minIndex];
-  
+
   return (
     <div>
       <Link
-        to={routes.contact}
+        to={routes.home}
         style={{ position: 'fixed', top: '1%', left: '1%' }}
       >
         <Button sx={{ color: 'white' }}>
@@ -56,7 +56,6 @@ const Project = () => {
           if (project.thumbId !== 'calculator') {
             return (
               <Box sx={{ padding: 2 }}>
-                
                 <Box sx={{ textAlign: 'center', paddingY: 0 }}>
                   <Typography variant='h5' sx={{ paddingTop: 2 }}>
                     {project.thumbHeader}
@@ -64,9 +63,10 @@ const Project = () => {
                   <Typography variant='h6'>{project.thumbDesc}</Typography>
                   <Tooltip
                     title='Full code on Github'
-                    placement='left'
+                    placement='right'
                     enterDelay={10}
                     leaveDelay={500}
+                    className='GithubToolTip'
                   >
                     <Typography
                       variant='h2'
@@ -75,7 +75,7 @@ const Project = () => {
                       {' '}
                       <a
                         href={project.MoreBtnLink}
-                        className='LinkNextPreviousProject'
+                        className='LinkGithubProject'
                       >
                         <GitHubIcon sx={{ fontSize: '5rem' }} />
                       </a>{' '}
@@ -159,7 +159,7 @@ const Project = () => {
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'space-around',
-                    marginY: 3
+                    marginY: 3,
                   }}
                 >
                   <Box>
@@ -298,7 +298,6 @@ const Project = () => {
           } else {
             return (
               <Box sx={{ paddingX: 2 }}>
-                
                 <Box sx={{ textAlign: 'center', paddingY: 2 }}>
                   <Typography variant='h5' sx={{ paddingTop: 2 }}>
                     {project.thumbHeader}
@@ -366,7 +365,7 @@ const Project = () => {
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'space-around',
-                    marginY: 3
+                    marginY: 3,
                   }}
                 >
                   <Box>

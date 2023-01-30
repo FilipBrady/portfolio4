@@ -22,7 +22,7 @@ export const ProjectData = [
     gistFile: 'todoist',
     MoreBtnLink:
       'https://github.com/Fiiillliiippp/todoist.git',
-    thumbnail: 'todoapp/today-todos-thumb.png',
+    thumbnail: 'Todo-app3.png',
     thumbDesc: ' Simple Todo app. Using React, MUI, React router.',
     thumbHeader: 'Todo App',
     thumbId: 'todo',
@@ -51,7 +51,7 @@ export const ProjectData = [
     gistFile: 'calculator',
     MoreBtnLink:
       'https://github.com/Fiiillliiippp/calculator.git',
-    thumbnail: 'calculator/calculator-plus-thumb.png',
+    thumbnail: 'Calculator2.png',
     thumbDesc: 'Simple calculator app. Using React useReducer.',
     thumbHeader: 'Calculator App',
     thumbId: 'calculator',
@@ -80,7 +80,7 @@ export const ProjectData = [
     gistFile: 'stackoverflow',
     MoreBtnLink:
       'https://github.com/Fiiillliiippp/prete-enie-z-sobn-ka.git',
-    thumbnail: 'stackover/top-page.png',
+    thumbnail: 'Group 162642.png',
     thumbDesc: 'Copy of stack overflow using Html, CSS and Javascript.',
     thumbHeader: 'Copy of Stackoverflow page',
     thumbId: 'stackOver',
@@ -114,7 +114,7 @@ export const ProjectData = [
     gistFile: 'spendingApp',
     MoreBtnLink:
       'https://gist.github.com/Fiiillliiippp/23fe437c5877d33266f55ebc438e5adb#file-spendingapp',
-    thumbnail: 'Spendings/Dashboard.png',
+    thumbnail: 'Group 162643.png',
     thumbDesc: 'Spending app. Using Html, CSS, Bootstrap.',
     thumbHeader: 'Spending App',
     thumbId: 'spending',
@@ -147,10 +147,43 @@ export const ProjectData = [
     gistFile: 'eshop',
     MoreBtnLink:
       'https://github.com/Fiiillliiippp/eshop.git',
-    thumbnail: 'eshop/thumbnail.png',
+    thumbnail: 'Eshop.png',
     thumbDesc: 'Simple pizza eshop',
     thumbHeader: 'Pizza Eshop',
     thumbId: 'eshop',
     projectId: 'eshop',
+  },{
+    id: 6,
+    projectDescription: [
+      {
+        label:
+          'This is ismple Pizza Eshop, you can choose from different offers. Every pizza has Title, size and price of pizza. Some of the pizzas have free delivery as well',
+        photo: "eshop/thumbnail.png",
+      },
+      {
+        label:
+          'If you want only specific pizza size or shipping cost, you have some options to filter and show only your desired size/shipping.',
+        photo: "eshop/filtering.png",
+      },
+      {
+        label:
+          'After hitting ADD TO CART your product will be added to the cart in top right corner. If you click ADD TO CART again, the product will change be added again. Amount will be 2 and price will be doubeled.',
+        photo: "eshop/eshop-cart.png",
+      },
+      {
+        label:
+          'You can change size of a pizza and amount od product as you wish. The price will be automaticaly changed depending on size cost, shipping and amount',
+        photo: "eshop/eshop-cart-more.png",
+      },
+    ],
+    gistId: '23fe437c5877d33266f55ebc438e5adb',
+    gistFile: 'blog',
+    MoreBtnLink:
+      'https://github.com/FilipBrady/blog.git',
+    thumbnail: 'Blog.png',
+    thumbDesc: 'Blog About Cars',
+    thumbHeader: 'Blog App',
+    thumbId: 'blog',
+    projectId: 'blog',
   },
 ];

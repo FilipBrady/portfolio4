@@ -1,6 +1,8 @@
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
+import { useEffect, useRef, useState } from 'react';
+import { ProjectData } from '../components/types/ProjectsData';
+import ProjectThumbnail from './ProjectThumbnail';
 import CalculatorThumbSingle from './ProjectThumbnailsSingle/CalculatorThumbSingle';
 import EshopThumbSingle from './ProjectThumbnailsSingle/EshopThumbSingle';
 import SpendingThumbSingle from './ProjectThumbnailsSingle/SpendingThumbSingle';
@@ -10,43 +12,6 @@ import TodoThumbSingle from './ProjectThumbnailsSingle/TodoThumbSingle';
 const Projects = () => {
   return (
     <div>
-      {/* <TodoAppThumb />
-      <CalculatorAppThumb />
-      <EshopAppThumb />
-      <SpendingAppThumb />
-      <StackOverflowThumb /> */}
-
-      {/* contact site: */}
-      {/* <Box
-        sx={{
-          minHeight: '150vh',
-          background: '#313030',
-          position: 'sticky',
-          top: 0,
-          zIndex: 10,
-          paddingTop: 5
-        }}
-        className='Projects'
-      >
-        <Typography variant='h4'>My Work</Typography>
-        <ParallaxProvider>
-          <Parallax scale={[1.2, 1]} speed={20}>
-            <TodoThumbSingle />
-          </Parallax>
-          <Parallax scale={[1.2, 1]} speed={10}>
-            <CalculatorThumbSingle />
-          </Parallax>
-          <Parallax scale={[1.2, 1]} speed={20}>
-            <EshopThumbSingle />
-          </Parallax>
-          <Parallax scale={[1.2, 1]} speed={5}>
-            <SpendingThumbSingle />
-          </Parallax>
-          <Parallax scale={[1.2, 1]} speed={5}>
-            <StackThumbSingle />
-          </Parallax>
-        </ParallaxProvider>
-      </Box> */}
       <Box
         sx={{
           minHeight: '150vh',
@@ -58,8 +23,10 @@ const Projects = () => {
         }}
         className='Projects'
       >
-        <Box sx={{marginX: 2}}>
-          <Typography variant='h4' sx={{padding: 2}}>My Work</Typography>
+        <Box sx={{ marginX: 2 }}>
+          <Typography variant='h4' sx={{ padding: 2 }}>
+            My Work
+          </Typography>
         </Box>
         <Box
           sx={{
@@ -69,13 +36,17 @@ const Projects = () => {
             justifyContent: 'center',
             alignContent: 'center',
             flexWrap: 'wrap',
+            gap: "5px"
           }}
         >
-          <TodoThumbSingle />
+          {ProjectData.map(Project => (
+            <ProjectThumbnail key={Project.id} Project={Project} />
+          ))}
+          {/* <TodoThumbSingle />
           <CalculatorThumbSingle />
           <EshopThumbSingle />
           <SpendingThumbSingle />
-          <StackThumbSingle />
+          <StackThumbSingle /> */}
         </Box>
       </Box>
     </div>

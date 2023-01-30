@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 const About = () => {
   const [scrollY, setScrollY] = useState(0);
 
-  console.log(scrollY);
   useEffect(() => {
     if (window.innerWidth > 1200) {
       const handleScroll = () => setScrollY(window.scrollY);
@@ -22,7 +21,7 @@ const About = () => {
         {/* <img alt='Me' src={MyPhoto} className='MyPhoto MyPhotoAbout' /> */}
         <Box
           // className='TextBoxAbout'
-          className={scrollY > 600 ? 'Fixed' : 'TextBoxAbout'}
+          className={scrollY > 550 ? 'Fixed' : 'TextBoxAbout'}
         >
           <Typography variant='h6' sx={{ paddingBottom: 1 }}>
             You can download my CV{' '}
