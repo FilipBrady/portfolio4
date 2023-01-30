@@ -59,21 +59,19 @@ const Home = () => {
     if (localStorage.getItem('isFirstTimeLoad') === null) {
       setTimeout(() => {
         setIsImgAnimated(false);
+        handleMouseOver1(elementRef1);
+        handleMouseOver2(elementRef2);
         localStorage.setItem('isFirstTimeLoad', 'false');
       }, 3000);
       window.onbeforeunload = () => {
         localStorage.removeItem('isFirstTimeLoad');
       };
     } else {
-      setIsImgAnimated(false);
+      setIsImgAnimated(true);
     }
-    
-    setTimeout(() => {
-      handleMouseOver1(elementRef1);
-      handleMouseOver2(elementRef2);
-    }, 3000);
-  }, []);
 
+    // setTimeout(() => {}, 3000);
+  }, []);
 
   return (
     <div>
@@ -94,9 +92,7 @@ const Home = () => {
             >
               Frontend Developer
             </Typography>
-            <Typography
-              variant='h6'
-            >
+            <Typography variant='h6'>
               I am a self-taught frontend Developer. I learned frontend
               development mainly from online courses. Currently, I am focusing
               on React JS. In the future, I plan to learn backend and working
@@ -106,7 +102,11 @@ const Home = () => {
           </Box>
         </Box>
         <div className='PhotoBox'>
-        <img alt='Me' src={MyPhoto} className={isImgAnimated ? 'MyPhoto' : 'MyPhoto MyPhotoAnimation'} />
+          <img
+            alt='Me'
+            src={MyPhoto}
+            className={isImgAnimated ? 'MyPhoto' : 'MyPhoto MyPhotoAnimation'}
+          />
         </div>
       </Box>
     </div>

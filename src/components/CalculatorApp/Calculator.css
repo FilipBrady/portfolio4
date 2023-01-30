@@ -6,6 +6,7 @@ html {
   padding: 15px;
   overflow: hidden;
   color: black;
+  user-select: none;
 }
 
 .CalculatorBody {

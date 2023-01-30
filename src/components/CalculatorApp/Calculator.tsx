@@ -33,7 +33,7 @@ function reducer(state: any, { type, payload }: any) {
       if (payload.digit === '.') {
         return {
           ...state,
-          currentOperand: `${state.currentOperand || ''} ${payload.digit}`,
+          currentOperand: `${state.currentOperand || ''}${payload.digit}`,
         };
       }
       return {
@@ -59,7 +59,7 @@ function reducer(state: any, { type, payload }: any) {
       }
       return {
         ...state,
-        currentOperand: state.currentOperand.slice(0, -1) || "",
+        currentOperand: String(state.currentOperand).slice(0, -1) || "",
       };
     case ACTION.OPERATION:
       if (state.currentOperand === null && state.previousOperand === null) {
@@ -108,16 +108,16 @@ function reducer(state: any, { type, payload }: any) {
         operation: null,
         currentOperand: evaluate(state),
       };
+    }
   }
-}
-
-function evaluate({ currentOperand, previousOperand, operation }: any) {
-  const currentNumber = parseFloat(currentOperand);
-  const previousNumber = parseFloat(previousOperand);
-
-  if (isNaN(currentNumber) || isNaN(previousNumber)) {
-    return '';
-  }
+  
+  function evaluate({ currentOperand, previousOperand, operation }: any) {
+    const currentNumber = parseFloat(currentOperand);
+    const previousNumber = parseFloat(previousOperand);
+    
+    if (isNaN(currentNumber) || isNaN(previousNumber)) {
+      return '';
+    }
 
   let result = 0;
   switch (operation) {
@@ -134,7 +134,8 @@ function evaluate({ currentOperand, previousOperand, operation }: any) {
       result = previousNumber / currentNumber;
       break;
   }
-  return (Math.round(result *1000) / 1000);
+  // return (Math.round(result *1000) / 1000);
+  return result;
 }
 
 const Calculator = () => {
